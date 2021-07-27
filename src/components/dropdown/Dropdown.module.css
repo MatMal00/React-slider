@@ -32,6 +32,11 @@
     cursor: pointer;
 }
 
+.dropdown input {
+    margin-left: 5px;
+    transform: scale(1.2);
+}
+
 .dropdown li {
     display: none;
     padding: 10px;
