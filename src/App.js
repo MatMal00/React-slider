@@ -1,11 +1,15 @@
 import './App.css';
+import Dropdown from './components/dropdown/Dropdown';
 import Slider from './components/slider/Slider';
 
 const App = () => {
     return (
-        <div className="container">
-            <Slider />
-        </div>
+        <>
+            <Dropdown />
+            <div className="container">
+                <Slider />
+            </div>
+        </>
     );
 };
 
