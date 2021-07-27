@@ -1,4 +1,5 @@
 .buttons button {
+    min-width: 60px;
     background-color: transparent;
     border: none;
 }

@@ -1,8 +1,12 @@
+import { useContext } from 'react';
+import { SliderContext } from '../../../../store/Slider.context';
 import arrowR from '../../../../images/arrow-right.svg';
 import arrowL from '../../../../images/arrow-left.svg';
 import styles from './Button.module.css';
 
 const Buttons = ({ numberOfImages, imageIndex, nextImage, prevImage }) => {
+    const { arrows } = useContext(SliderContext);
+
     const handleNextImage = () => nextImage();
     const handlePrevImage = () => prevImage();
 
@@ -14,10 +18,10 @@ const Buttons = ({ numberOfImages, imageIndex, nextImage, prevImage }) => {
     return (
         <div className={styles.buttons}>
             <button disabled={disableNext} onClick={handleNextImage} className={styles.right}>
-                <img src={arrowR} alt="" />
+                {arrows && <img src={arrowR} alt="" />}
             </button>
             <button disabled={disablePrev} onClick={handlePrevImage} className={styles.left}>
-                <img src={arrowL} alt="" />
+                {arrows && <img src={arrowL} alt="" />}
             </button>
         </div>
     );

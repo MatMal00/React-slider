@@ -1,3 +1,5 @@
+import { useContext } from 'react';
+import { SliderContext } from '../../store/Slider.context';
 import Body from './subcomponents/body/Body';
 import Buttons from './subcomponents/buttons/Buttons';
 import useSlider from '../../hooks/useSlider.js';
@@ -35,6 +37,7 @@ const images = [
 
 const Slider = () => {
     const { changeImage, sliderImages } = useSlider(images);
+    const { pagination } = useContext(SliderContext);
 
     const nextImage = () => changeImage(true);
     const prevImage = () => changeImage(false);
@@ -52,7 +55,13 @@ const Slider = () => {
                 nextImage={nextImage}
                 prevImage={prevImage}
             />
-            <Pagination changeImage={certainImage} imageIndex={imageIndex} numberOfImages={numberOfImages} />
+            {pagination && (
+                <Pagination
+                    changeImage={certainImage}
+                    imageIndex={imageIndex}
+                    numberOfImages={numberOfImages}
+                />
+            )}
         </div>
     );
 };
