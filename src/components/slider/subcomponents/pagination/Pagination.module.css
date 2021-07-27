@@ -1,0 +1,32 @@
+.pagination {
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.pagination button {
+    margin: 0 2px;
+    width: 18px;
+    height: 18px;
+    font-size: 10px;
+    border-radius: 30px;
+    border: 1px solid white;
+    background-color: rgb(80, 80, 80);
+    color: white;
+}
+
+button.active {
+    background-color: white;
+    color: black;
+    animation: active .2s ease;
+}
+
+@keyframes active {
+    from {
+        transform: scale(1.2);
+    }
+    to {
+        transform: scale(1);
+    }
+}

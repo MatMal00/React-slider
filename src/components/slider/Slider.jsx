@@ -8,6 +8,7 @@ import img3 from '../../images/works3.jpg';
 import img4 from '../../images/works4.jpg';
 
 import styles from './Slider.module.css';
+import Pagination from './subcomponents/pagination/Pagination';
 
 const images = [
     {
@@ -37,20 +38,21 @@ const Slider = () => {
 
     const nextImage = () => changeImage(true);
     const prevImage = () => changeImage(false);
+    const certainImage = index => changeImage(null, index);
 
-    // const prev = () => {
-    //     const imagesToEdit = [...sliderImages];
-    //     const index = imagesToEdit.findIndex(img => img.active);
-    //     imagesToEdit[index].active = false;
-    //     imagesToEdit[index - 1].active = true;
-
-    //     setSliderImages(imagesToEdit);
-    // };
+    const imageIndex = sliderImages.findIndex(img => img.active);
+    const numberOfImages = sliderImages.length;
 
     return (
         <div className={styles.slider}>
-            <Body images={sliderImages} />
-            <Buttons nextImage={nextImage} prevImage={prevImage} />
+            <Body image={sliderImages[imageIndex]} />
+            <Buttons
+                numberOfImages={numberOfImages}
+                imageIndex={imageIndex}
+                nextImage={nextImage}
+                prevImage={prevImage}
+            />
+            <Pagination changeImage={certainImage} imageIndex={imageIndex} numberOfImages={numberOfImages} />
         </div>
     );
 };

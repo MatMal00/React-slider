@@ -6,17 +6,22 @@ const useSlider = (images = []) => {
     const numberOfImages = images.length;
 
     const changeImage = useCallback(
-        direction => {
-            const index = sliderImages.findIndex(img => img.active);
+        (direction, certain = null) => {
             const newImages = [...sliderImages];
+            const index = sliderImages.findIndex(img => img.active);
 
-            if (direction === true && numberOfImages !== index + 1) {
+            if (!Boolean(certain)) {
+                if (direction === true && numberOfImages !== index + 1) {
+                    newImages[index].active = false;
+                    newImages[index + 1].active = true;
+                }
+                if (direction === false && index !== 0) {
+                    newImages[index].active = false;
+                    newImages[index - 1].active = true;
+                }
+            } else {
                 newImages[index].active = false;
-                newImages[index + 1].active = true;
-            }
-            if (direction === false && index !== 0) {
-                newImages[index].active = false;
-                newImages[index - 1].active = true;
+                newImages[certain].active = true;
             }
 
             setSliderImages(newImages);
