@@ -4,3 +4,9 @@
     width: 100%;
     max-width: 1000px;
 }
+
+.error {
+    margin-top: 20vh;
+    text-align: center;
+    color: tomato;
+}

@@ -1,0 +1,49 @@
+.container {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.loader {
+    padding-top: 20vh;
+    margin: 50px auto;
+    display: flex;
+    width: 200px;
+    height: 80px;
+}
+
+.circle {
+    margin: 0 15px;
+    width: 30px;
+    height: 30px;
+    background: white;
+    border-radius: 50%;
+    animation: jump 1s linear infinite;
+}
+
+.container p {
+    margin: auto;
+    font-family: arial;
+    font-size: 20px;
+    color: white;
+}
+
+.circle:nth-child(1) {
+    animation-delay: 0.2s;
+}
+
+.circle:nth-child(2) {
+    animation-delay: 0.4s;
+}
+
+@keyframes jump {
+    0% {
+        margin-top: 0;
+    }
+    35% {
+        margin-top: -75px;
+    }
+    70% {
+        margin-top: 0px;
+    }
+}

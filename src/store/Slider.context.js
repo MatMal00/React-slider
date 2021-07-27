@@ -24,12 +24,12 @@ const sliderReducer = (state, { type, payload }) => {
             return {
                 ...state,
                 images: payload,
-                loading: false,
+                isLoading: false,
             };
         case LOADING:
             return {
                 ...state,
-                loading: true,
+                isLoading: true,
             };
         case SET_PAGINATION:
             return {
@@ -45,6 +45,7 @@ const sliderReducer = (state, { type, payload }) => {
             return {
                 ...state,
                 error: payload,
+                isLoading: false,
             };
 
         default:
@@ -61,7 +62,7 @@ const SliderProvider = ({ children }) => {
             const sliderImages = await fetchImages();
             dispatch({ type: SET_DATA, payload: sliderImages });
         } catch (err) {
-            dispatch({ type: ERROR, payload: err });
+            dispatch({ type: ERROR, payload: err.message });
         }
     };
 

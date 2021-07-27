@@ -2,13 +2,14 @@ import { useContext } from 'react';
 import { SliderContext } from '../../store/Slider.context';
 import Body from './subcomponents/body/Body';
 import Buttons from './subcomponents/buttons/Buttons';
+import Loader from '../loader/Loader';
+import Pagination from './subcomponents/pagination/Pagination';
 import useSlider from '../../hooks/useSlider.js';
 
 import styles from './Slider.module.css';
-import Pagination from './subcomponents/pagination/Pagination';
 
 const Slider = () => {
-    const { pagination, images } = useContext(SliderContext);
+    const { pagination, images, isLoading, error } = useContext(SliderContext);
     const { changeImage, sliderImages, numberOfImages } = useSlider(images);
 
     const nextImage = () => changeImage(true);
@@ -17,7 +18,7 @@ const Slider = () => {
 
     const imageIndex = sliderImages.findIndex(img => img.active);
 
-    return (
+    const sliderContext = (
         <div className={styles.slider}>
             <Body images={sliderImages} />
             <Buttons
@@ -34,6 +35,12 @@ const Slider = () => {
                 />
             )}
         </div>
+    );
+    return (
+        <>
+            {isLoading ? <Loader /> : !error && sliderContext}
+            {error && <p className="error">{error}</p>}
+        </>
     );
 };
 
