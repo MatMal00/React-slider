@@ -9,6 +9,14 @@
     height: 100%;
     object-fit: cover;
 }
+.hide {
+    display: none;
+}
+
+.active {
+    display: block;
+    animation: switch 0.5s ease-in;
+}
 
 .img {
     animation: switch 0.5s ease-in;

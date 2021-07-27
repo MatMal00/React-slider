@@ -15,22 +15,22 @@ import Pagination from './subcomponents/pagination/Pagination';
 const images = [
     {
         src: img1,
-        alt: 'wokrks photo1',
+        alt: 'photo1',
         active: false,
     },
     {
         src: img2,
-        alt: 'wokrks photo2',
+        alt: 'photo2',
         active: true,
     },
     {
         src: img3,
-        alt: 'wokrks photo3',
+        alt: 'photo3',
         active: false,
     },
     {
         src: img4,
-        alt: 'wokrks photo4',
+        alt: 'photo4',
         active: false,
     },
 ];
@@ -48,7 +48,7 @@ const Slider = () => {
 
     return (
         <div className={styles.slider}>
-            <Body image={sliderImages[imageIndex]} />
+            <Body images={sliderImages} />
             <Buttons
                 numberOfImages={numberOfImages}
                 imageIndex={imageIndex}

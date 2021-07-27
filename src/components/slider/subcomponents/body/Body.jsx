@@ -1,11 +1,16 @@
 import styles from './Body.module.css';
 
-const Body = ({ image }) => {
-    return (
-        <div className={styles.body}>
-            <img key={image.src} className={styles.img} src={image.src} alt={image.alt} />
-        </div>
-    );
+const Body = ({ images }) => {
+    const renderImage = images.map(img => (
+        <img
+            key={img.src}
+            className={img.active ? `${styles.active}` : `${styles.hide}`}
+            src={img.src}
+            alt={img.alt}
+        />
+    ));
+
+    return <div className={styles.body}>{renderImage}</div>;
 };
 
 export default Body;
