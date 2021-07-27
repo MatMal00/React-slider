@@ -1,0 +1,14 @@
+.right,
+.left {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+}
+
+.right {
+    right: 10px;
+}
+.left {
+    left: 10px;
+}
