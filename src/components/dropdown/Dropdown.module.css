@@ -45,7 +45,7 @@
     display: block;
 }
 
-.dropdown button:hover ~ ul li {
+.dropdown button:hover + ul li {
     display: block;
     animation: showDropdown 0.5s backwards;
 }
