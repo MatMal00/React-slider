@@ -1,12 +1,13 @@
 import { useContext } from 'react';
 import { SliderContext } from '../../store/Slider.context';
+import { SET_ARROWS, SET_PAGINATION } from '../../store/Slider.actions';
 import styles from './Dropdown.module.css';
 
 const Dropdown = () => {
-    const { setPagination, pagination, setArrows, arrows } = useContext(SliderContext);
+    const { arrows, pagination, dispatch } = useContext(SliderContext);
 
-    const handlePagination = () => setPagination(!pagination);
-    const handleArrows = () => setArrows(!arrows);
+    const handleArrows = () => dispatch({ type: SET_ARROWS, payload: !arrows });
+    const handlePagination = () => dispatch({ type: SET_PAGINATION, payload: !pagination });
 
     return (
         <div className={styles.dropdown}>
