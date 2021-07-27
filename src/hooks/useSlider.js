@@ -1,9 +1,11 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 //DIRECTION: TRUE: RIGHT, FALSE: LEFT
 const useSlider = (images = []) => {
-    const [sliderImages, setSliderImages] = useState(images);
+    const [sliderImages, setSliderImages] = useState([]);
     const numberOfImages = images.length;
+
+    useEffect(() => setSliderImages(images), [images]);
 
     const changeImage = useCallback(
         (direction, certain = null) => {
@@ -32,6 +34,7 @@ const useSlider = (images = []) => {
     return {
         changeImage,
         sliderImages,
+        numberOfImages,
     };
 };
 
