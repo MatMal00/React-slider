@@ -1,11 +1,12 @@
 import { createContext, useEffect, useReducer } from 'react';
-import { SET_DATA, SET_ARROWS, SET_PAGINATION, LOADING, ERROR } from './Slider.actions';
+import { SET_DATA, SET_ARROWS, SET_PAGINATION, SET_SWIPE, LOADING, ERROR } from './Slider.actions';
 import { fetchImages } from './Slider.services';
 
 export const SliderContext = createContext({
     images: [],
     pagination: true,
     arrows: true,
+    swipe: true,
     isLoading: false,
     error: '',
 });
@@ -14,6 +15,7 @@ const initialState = {
     images: [],
     pagination: true,
     arrows: true,
+    swipe: true,
     isLoading: false,
     error: '',
 };
@@ -35,6 +37,11 @@ const sliderReducer = (state, { type, payload }) => {
             return {
                 ...state,
                 pagination: payload,
+            };
+        case SET_SWIPE:
+            return {
+                ...state,
+                swipe: payload,
             };
         case SET_ARROWS:
             return {

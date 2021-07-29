@@ -10,11 +10,11 @@ import useSlider from '../../hooks/useSlider.js';
 import styles from './Slider.module.css';
 
 const Slider = () => {
-    const { pagination, images, isLoading, error } = useContext(SliderContext);
+    const { pagination, swipe, images, isLoading, error } = useContext(SliderContext);
     const { changeImage, sliderImages, numberOfImages } = useSlider(images);
     const handlers = useSwipeable({
-        onSwipedRight: () => prevImage(),
-        onSwipedLeft: () => nextImage(),
+        onSwipedRight: () => swipe && prevImage(),
+        onSwipedLeft: () => swipe && nextImage(),
     });
 
     const nextImage = () => changeImage(NEXT);

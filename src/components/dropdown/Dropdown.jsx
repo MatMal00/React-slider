@@ -1,13 +1,14 @@
 import { useContext } from 'react';
 import { SliderContext } from '../../store/Slider.context';
-import { SET_ARROWS, SET_PAGINATION } from '../../store/Slider.actions';
+import { SET_ARROWS, SET_PAGINATION, SET_SWIPE } from '../../store/Slider.actions';
 import styles from './Dropdown.module.css';
 
 const Dropdown = () => {
-    const { arrows, pagination, dispatch } = useContext(SliderContext);
-
+    const { arrows, pagination, swipe, dispatch } = useContext(SliderContext);
+    
     const handleArrows = () => dispatch({ type: SET_ARROWS, payload: !arrows });
     const handlePagination = () => dispatch({ type: SET_PAGINATION, payload: !pagination });
+    const handleOnSwipe = () => dispatch({ type: SET_SWIPE, payload: !swipe });
 
     return (
         <div className={styles.dropdown}>
@@ -27,6 +28,11 @@ const Dropdown = () => {
                 <li>
                     <label htmlFor="arrows">
                         Arrows <input onChange={handleArrows} id="arrows" type="checkbox" checked={arrows} />
+                    </label>
+                </li>
+                <li>
+                    <label htmlFor="swipe">
+                        On swipe (mobile) <input onChange={handleOnSwipe} id="swipe" type="checkbox" checked={swipe} />
                     </label>
                 </li>
             </ul>
